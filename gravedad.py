@@ -17,10 +17,26 @@ sun = Body("Sun", 10000.0, np.array([0.0 , 0.0]), np.array([0.0 , 0.0]))
 planet = Body("Planet", 1000.0, np.array([10.0 , 0.0]), np.array([0.0 , 8.0]))
 #rocket = Body("Rocket", 1.0, np.array([10.0 , 0.0]), np.array([0.0 , 8.0]))
 
-#Newton Gravity
+
+#Newton attraction
+
+#Constant universal Gravity
+G = 1
+
 def calc_aceleration(body, attractor):
-	Planet
-	Sun
+
+	#Calculate vector distance, then convert vector to num
+	distance = body.pos - attractor.pos
+	d = np.linalg.norm(distance)
+	
+	# G(mass1 * mass2)
+	numerator = G * body.mass * attractor.mass
+
+	denominator = np.power(d , 2)
+
+	Force = (numerator / denominator)
+
+	return 0
 
 #Function Main
 tick = 0.1
