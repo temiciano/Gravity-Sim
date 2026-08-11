@@ -2,16 +2,29 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-#Sol
-#gravedad, masa, posicion
+#class for 3 entities
+#elements: mass, position, velocity
+class Body:
+	def __init__(self, name, mass, pos, vel):
+		self.name = name
+		self.mass = mass
+		self.pos = pos
+		self.vel = vel
 
-Gravity = 1.0
-Mass = 1000.0
-Pos = np.array([0.0 , 0.0])
 
-#Planeta
-#posicion, velocidad
+#entity sun, planet and rocket
+sun = Body("Sun", 10000.0, np.array([0.0 , 0.0]), np.array([0.0 , 0.0]))
+planet = Body("Planet", 1000.0, np.array([10.0 , 0.0]), np.array([0.0 , 8.0]))
+#rocket = Body("Rocket", 1.0, np.array([10.0 , 0.0]), np.array([0.0 , 8.0]))
 
-pos = np.array([10.0 , 0.0])
-vel = np.array([0.0 , 0.0])
+#Newton Gravity
+def calc_aceleration(body, attractor):
+	Planet
+	Sun
 
+#Function Main
+tick = 0.1
+
+#for i in range
+
+#Draw on screen
