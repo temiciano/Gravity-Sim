@@ -28,17 +28,17 @@ def calc_acceleration(body, attractor):
 
 	#Calculate vector distance, then convert vector to num
 	distance = body.pos - attractor.pos
-	d = np.linalg.norm(distance)
+	r = np.linalg.norm(distance)
 	
 	# G(mass1 * mass2)
 	numerator = G * body.mass * attractor.mass
 
-	denominator = np.power(d , 2)
+	denominator = np.power(r , 2)
 	force = numerator / denominator
 
 	magnitude = force / body.mass
-	direction - distance / d
-	acceleratation = magnitude * direction
+	direction = -distance / r
+	acceleration = magnitude * direction
 
 	return acceleration
 
@@ -57,10 +57,23 @@ ax.set_ylim(-axet , axet)
 ax.set_aspect('equal')
 ax.set_title('Orbital system')
 
-circles = []
+points = []
 for asset in assets:
-	colour =
-	size =
+	colour = 'yellow' if asset.name == "Sun" else 'lightblue'
+	size = 100 if asset.name == "Sun" else 50
+	p, = ax.plot([], [], 'o', color=colour, markersize=size)
+	points.append(p)
+
+def refresh(frame):
+	a = calc_acceleration(planet, sun)
+	planet.vel = planet.vel + a * tick
+	planet.pos = planet.pos + planet.vel * tick
+
+	for point, asset in zip(points, assets):
+		point.set_data([asset.pos[0]], [asset.pos[1]])
+
+	return points
 
 
+sim = animation.FuncAnimation(fig, refresh, frames=2000, interval=10, blit=True)
 plt.show()
