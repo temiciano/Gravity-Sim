@@ -13,8 +13,8 @@ class Body:
 
 
 #entity sun, planet and rocket
-sun = Body("Sun", 10000.0, np.array([0.0 , 0.0]), np.array([0.0 , 0.0]))
-planet = Body("Planet", 1000.0, np.array([10.0 , 0.0]), np.array([0.0 , 8.0]))
+sun = Body("Sun", 1000.0, np.array([0.0 , 0.0]), np.array([0.0 , 0.0]))
+planet = Body("Planet", 10.0, np.array([12.0 , 0.0]), np.array([0.0 , 5.0]))
 #rocket = Body("Rocket", 1.0, np.array([10.0 , 0.0]), np.array([0.0 , 8.0]))
 
 assets = [sun , planet]
@@ -43,12 +43,10 @@ def calc_acceleration(body, attractor):
 	return acceleration
 
 #Function Main
-tick = 0.1
-
-#for i in range
+tick = 0.01
 
 #Draw on screen
-axet = 10
+axet = 15
 
 #environment, Cartesian plane
 fig, ax = plt.subplots(figsize=(10 , 10))
@@ -60,7 +58,7 @@ ax.set_title('Orbital system')
 points = []
 for asset in assets:
 	colour = 'yellow' if asset.name == "Sun" else 'lightblue'
-	size = 100 if asset.name == "Sun" else 50
+	size = 100 if asset.name == "Sun" else 20
 	p, = ax.plot([], [], 'o', color=colour, markersize=size)
 	points.append(p)
 
