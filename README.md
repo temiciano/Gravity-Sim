@@ -42,3 +42,10 @@ Finally, we apply this resulting velocity to the planet's position, once per tic
 
 
 Finally, draw the function
+
+
+Now we have basic pseudo solar system, just a planet orbiting a sun.
+
+To do:
+Add perihelion to accurate simulate orbital bodies
+Add rocket, launches after x seconds.

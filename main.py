@@ -13,11 +13,12 @@ class Body:
 
 
 #entity sun, planet and rocket
-sun = Body("Sun", 1000.0, np.array([0.0 , 0.0]), np.array([0.0 , 0.0]))
-planet = Body("Planet", 10.0, np.array([12.0 , 0.0]), np.array([0.0 , 5.0]))
-#rocket = Body("Rocket", 1.0, np.array([10.0 , 0.0]), np.array([0.0 , 8.0]))
+sun = Body("Sun", 400.0, np.array([0.0 , 0.0]), np.array([0.0 , 0.0]))
+planet = Body("Planet", 20.0, np.array([12.0 , 0.0]), np.array([0.0 , 5.0]))
+rocket = Body("Rocket", 2.0, np.array([12.0 , 0.0]), np.array([0.0 , 5.0]))
 
-assets = [sun , planet]
+
+assets = [sun , planet, rocket]
 
 #Newton attraction
 
@@ -27,7 +28,7 @@ G = 1
 def calc_acceleration(body, attractor):
 
 	#Calculate vector distance, then convert vector to num
-	distance = body.pos - attractor.pos
+	distance = body.pos - attractor.pos1
 	r = np.linalg.norm(distance)
 	
 	# G(mass1 * mass2)
@@ -57,8 +58,8 @@ ax.set_title('Orbital system')
 
 points = []
 for asset in assets:
-	colour = 'yellow' if asset.name == "Sun" else 'lightblue'
-	size = 100 if asset.name == "Sun" else 20
+	colour = 'orange' if asset.name == "Sun" else 'lightblue'
+	size = 80 if asset.name == "Sun" else 12
 	p, = ax.plot([], [], 'o', color=colour, markersize=size)
 	points.append(p)
 
@@ -66,6 +67,10 @@ def refresh(frame):
 	a = calc_acceleration(planet, sun)
 	planet.vel = planet.vel + a * tick
 	planet.pos = planet.pos + planet.vel * tick
+
+	a = calc_acceleration(rocket, sun)
+	rocket.vel = rocket.vel + a * tick
+	rocket.pos = rocket.pos + rocket.vel * tick
 
 	for point, asset in zip(points, assets):
 		point.set_data([asset.pos[0]], [asset.pos[1]])
