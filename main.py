@@ -33,12 +33,12 @@ def calc_acceleration(body, attractor):
 	# G(mass1 * mass2)
 	numerator = G * body.mass * attractor.mass
 
-	denominator = np.power(r , 2)
+	denominator = r**2
 	force = numerator / denominator
 
-	magnitude = force / body.mass
+	magnitude_accel = force / body.mass
 	direction = -distance / r
-	acceleration = magnitude * direction
+	acceleration = magnitude_accel * direction
 
 	return acceleration
 
